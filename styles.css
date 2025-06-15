@@ -1,0 +1,37 @@
+/*
+  This CSS provides the visual feedback for the extension's two highlight states.
+*/
+
+/* 1. Persistent highlight for "staged" focus on inputs, etc. */
+body .jump-target-highlight {
+  outline: 3px solid #ffd700 !important; /* Bright yellow outline */
+  outline-offset: 2px !important;
+  box-shadow: 0 0 12px 2px rgba(255, 215, 0, 0.7) !important; /* Soft glow effect */
+  border-radius: 4px !important;
+  background-color: rgba(255, 215, 0, 0.1) !important; /* Light fill */
+  transition:
+    outline 0.1s ease-in-out,
+    box-shadow 0.1s ease-in-out;
+}
+
+/* 2. Temporary highlight "ping" for scrolled elements like headings. */
+body .jump-scroll-ping {
+  /* This animation applies a highlight and then fades it out over 1.2 seconds. */
+  animation: temporary-highlight 1.2s ease-in-out forwards !important;
+  border-radius: 4px !important; /* Ensure rounded corners during animation */
+}
+
+@keyframes temporary-highlight {
+  0% {
+    outline: 2px solid rgba(50, 150, 255, 0.9); /* Start with a blue highlight */
+    background-color: rgba(50, 150, 255, 0.15);
+  }
+  40% {
+    outline: 2px solid rgba(50, 150, 255, 0.9); /* Hold the highlight */
+    background-color: rgba(50, 150, 255, 0.15);
+  }
+  100% {
+    outline: 2px solid rgba(50, 150, 255, 0); /* Fade out the outline and background */
+    background-color: rgba(50, 150, 255, 0);
+  }
+}

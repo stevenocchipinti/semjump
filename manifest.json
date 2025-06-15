@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Semantic Jump",
+  "version": "1.0",
+  "description": "Jump between semantic elements like headings, buttons, links, and inputs.",
+  "permissions": [],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.mjs"],
+      "css": ["styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["styles.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
