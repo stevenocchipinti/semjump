@@ -1,8 +1,15 @@
 {
-  "name": "semantic-jump-extension",
+  "name": "semantic-jump",
   "version": "1.0.0",
-  "description": "Tests for the Semantic Jump Chrome Extension",
+  "description": "A browser extension for semantic navigation through web content",
   "private": true,
-  "scripts": {},
-  "devDependencies": {}
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:unit": "node tests/unit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.42.0",
+    "playwright": "^1.42.0"
+  }
 }

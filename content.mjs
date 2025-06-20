@@ -3,20 +3,30 @@
 const SELECTORS = {
   // Headings
   h: 'h1, h2, h3, h4, h5, h6, [role="heading"]',
+  1: "h1",
+  2: "h2",
+  3: "h3",
+  4: "h4",
+  5: "h5",
+  6: "h6",
+
   // Paragraphs
   p: 'p, [role="paragraph"]',
+
   // Interactive Elements
   b: 'button, [role="button"]',
   l: 'a[href], [role="link"]',
   i: 'input:not([type="hidden"]), textarea, select, [contenteditable="true"]',
   c: 'input[type="checkbox"], [role="checkbox"]',
-  t: 'input[type="radio"], [role="radio"]',
+  r: 'input[type="radio"], [role="radio"]',
+
   // Landmark Roles
   n: 'nav, [role="navigation"]',
   m: 'main, [role="main"]',
   s: '[role="search"]',
   f: 'form[aria-label], form[aria-labelledby], [role="form"]',
   a: 'article, [role="article"]',
+
   // Grouping Roles
   T: 'table, [role="table"]',
   L: 'ul, ol, [role="list"]',
@@ -29,7 +39,7 @@ const SELECTORS = {
  */
 
 // 1. STAGED FOCUS: Highlight these elements first. User must press Enter to focus.
-const STAGED_FOCUS_TYPES = ["i", "s"]
+const STAGED_FOCUS_TYPES = ["i", "s", "c", "r"]
 
 // 2. SCROLL & PING: For non-interactive content. Scroll to them and add a temporary highlight.
 //    Focus is NOT changed.
@@ -57,9 +67,7 @@ function clearStagedState() {
  */
 function applyScrollPing(element) {
   // Clear any previous ping animation timeout
-  if (pingTimeoutId) {
-    clearTimeout(pingTimeoutId)
-  }
+  if (pingTimeoutId) clearTimeout(pingTimeoutId)
 
   // Clean up any existing pings
   document.querySelectorAll(".jump-scroll-ping").forEach(el => {
@@ -91,7 +99,7 @@ function navigate(direction, typeKey) {
 
   // Find the viewport boundaries
   const viewportTop = window.scrollY
-  const viewportBottom = viewportTop + window.innerHeight
+  // const viewportBottom = viewportTop + window.innerHeight
   const viewportMiddle = viewportTop + window.innerHeight / 2
 
   // Special handling for directly focusable elements like buttons
@@ -115,11 +123,6 @@ function navigate(direction, typeKey) {
         nextIndex = 0
       } else if (nextIndex >= allElements.length) {
         nextIndex = allElements.length - 1
-      }
-
-      // If we're already at the edge, don't move
-      if (nextIndex === currentIndex) {
-        return
       }
 
       const newTarget = allElements[nextIndex]

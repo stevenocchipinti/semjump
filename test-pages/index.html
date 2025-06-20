@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semantic Jump Test Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .jump-target-highlight {
+        outline: 2px solid blue !important;
+        outline-offset: 2px;
+        background-color: rgba(0, 0, 255, 0.1);
+      }
+      .jump-scroll-ping {
+        animation: pulse 1.2s ease-in-out;
+        outline: 2px solid orangered;
+        outline-offset: 2px;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          background-color: transparent;
+        }
+        50% {
+          background-color: rgba(255, 69, 0, 0.3);
+        }
+      }
+      section {
+        margin-bottom: 40px;
+      }
+      button,
+      input {
+        margin: 5px;
+        padding: 8px 12px;
+      }
+      nav {
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Semantic Jump Test Page</h1>
+      <nav>
+        <a href="#section1">Section 1</a> | <a href="#section2">Section 2</a> |
+        <a href="#section3">Section 3</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="section1">
+        <h2>Headings Test Section</h2>
+        <p>This section tests navigation between different heading levels.</p>
+
+        <h3>Sub-heading 1</h3>
+        <p>Content under sub-heading 1.</p>
+
+        <h3>Sub-heading 2</h3>
+        <p>Content under sub-heading 2.</p>
+
+        <h4>Deeper heading</h4>
+        <p>This is a level 4 heading with its paragraph.</p>
+      </section>
+
+      <section id="section2">
+        <h2>Interactive Elements Test</h2>
+        <p>
+          This section contains various interactive elements to test navigation.
+        </p>
+
+        <div>
+          <button id="button1">Button 1</button>
+          <button id="button2">Button 2</button>
+          <button id="button3">Button 3</button>
+        </div>
+
+        <div>
+          <label for="textInput">Text Input:</label>
+          <input type="text" id="textInput" placeholder="Type something" />
+        </div>
+
+        <div>
+          <input type="checkbox" id="checkbox1" />
+          <label for="checkbox1">Checkbox 1</label>
+
+          <input type="checkbox" id="checkbox2" />
+          <label for="checkbox2">Checkbox 2</label>
+        </div>
+      </section>
+
+      <section id="section3">
+        <h2>Paragraph Navigation Test</h2>
+        <p>
+          This is the first paragraph in this section. It provides text that can
+          be used to test the paragraph navigation feature.
+        </p>
+
+        <p>
+          This is the second paragraph. Semantic Jump should allow you to easily
+          move between paragraphs using the ]p and [p keyboard shortcuts.
+        </p>
+
+        <p>
+          This is the third paragraph. Each time you navigate, the targeted
+          paragraph should be highlighted briefly.
+        </p>
+
+        <p>
+          This is the fourth paragraph. When you reach the last paragraph, the
+          navigation should stop instead of wrapping around to the beginning.
+        </p>
+
+        <p>
+          This is the fifth paragraph. Similarly, when at the first paragraph,
+          going backward should not wrap around to the end.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Footer content for the test page.</p>
+    </footer>
+  </body>
+</html>
